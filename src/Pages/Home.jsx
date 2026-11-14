@@ -1,4 +1,5 @@
 import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import mainImage from '../assets/HomePage/main-Image.png'
 import AcImage from '../assets/HomePage/Ac.jpeg'
 import ElectricalImage from '../assets/HomePage/electrical.jpeg'
@@ -10,10 +11,13 @@ import Verified from '../assets/HomePage/verifiedprofessional.jpeg'
 import  Quality from '../assets/HomePage/Quality.jpeg'
 import Ontime from '../assets/HomePage/Ontimeservice.jpeg'
 import EasyBooking from '../assets/HomePage/EasyBooking.jpeg'
+import services from '../data/services'
 
 
 
 const Home = () => {
+
+  const navigate = useNavigate();
     
   return (
     <>
@@ -353,7 +357,12 @@ const Home = () => {
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
 
     {/* Card 1 */}
-    <div
+    <div 
+    onClick={()=>{
+      navigate('/detailing',{
+        state:{serviceId :1}
+      })
+    }}
       className="group bg-white rounded-2xl overflow-hidden
                  border border-gray-100
                  shadow-sm
@@ -377,13 +386,19 @@ const Home = () => {
         </p>
 
         <button className="mt-4 text-xs font-semibold text-gray-900">
+
           Explore →
         </button>
       </div>
     </div>
 
     {/* Card 2 */}
-    <div
+    <div 
+     onClick={()=>{
+      navigate('/detailing',{
+        state:{serviceId :2}
+      })
+    }}
       className="group bg-white rounded-2xl overflow-hidden
                  border border-gray-100
                  shadow-sm
@@ -414,6 +429,11 @@ const Home = () => {
 
     {/* Card 3 */}
     <div
+    onClick={()=>{
+      navigate('/detailing',{
+        state: {serviceId:4}
+      })
+    }}
       className="group bg-white rounded-2xl overflow-hidden
                  border border-gray-100
                  shadow-sm
@@ -444,6 +464,11 @@ const Home = () => {
 
     {/* Card 4 */}
     <div
+    onClick={()=>{
+      navigate('/detailing',{
+        state: {serviceId:5}
+      })
+    }}
       className="group bg-white rounded-2xl overflow-hidden
                  border border-gray-100
                  shadow-sm
@@ -474,6 +499,11 @@ const Home = () => {
 
     {/* Card 5 */}
     <div
+    onClick={()=>{
+      navigate('/detailing',{
+        state: {serviceId:3}
+      })
+    }}
       className="group bg-white rounded-2xl overflow-hidden
                  border border-gray-100
                  shadow-sm
@@ -507,30 +537,13 @@ const Home = () => {
 
 
  {/* third section */}
-   {/* ===================== WHY CHOOSE US ===================== */}
+                  
 
 <section className="relative overflow-hidden py-20">
-
-  {/* ===== Section Background Image ===== */}
-
-  <img
-    src={WhyChoose}
-    alt=""
-    className="absolute inset-0 w-full h-full object-cover opacity-20"
-  />
-
-  {/* Soft Background Overlay */}
-
-  <div className="absolute inset-0 bg-[#FAF9F6]/75"></div>
-
-
-  {/* ===== Main Content ===== */}
-
+  
   <div className="relative max-w-7xl mx-auto px-6">
 
-
-    {/* ===== Section Heading ===== */}
-
+   
     <div className="text-center max-w-2xl mx-auto mb-12">
 
       <p className="text-xs font-semibold tracking-[0.15em]
@@ -538,9 +551,8 @@ const Home = () => {
         WHY CHOOSE US
       </p>
 
-      <h2 className="text-3xl lg:text-4xl
-                     font-bold tracking-tight
-                     text-gray-900">
+      <h2 className="text-3xl lg:text-4xl font-bold
+                     tracking-tight text-gray-900">
         Service You Can Trust
       </h2>
 
@@ -551,67 +563,53 @@ const Home = () => {
     </div>
 
 
-    {/* ===== Four Cards ===== */}
+  
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
 
-
-      {/* ================= CARD 1 ================= */}
+      
 
       <div
-        className="group relative overflow-hidden
-                   min-h-[270px]
-                   rounded-2xl
-                   border border-white/70
-                   shadow-sm
-                   hover:shadow-xl
-                   hover:-translate-y-1
+        className="group relative h-72.5 overflow-hidden
+                   rounded-2xl shadow-md
+                   hover:-translate-y-1 hover:shadow-xl
                    transition-all duration-300"
       >
 
-        {/* Background Image */}
-
+       
         <img
           src={Verified}
           alt="Verified Professionals"
-          className="absolute inset-0
-                     w-full h-full
+          className="absolute inset-0 w-full h-full
                      object-cover
-                     opacity-35
-                     group-hover:opacity-45
-                     transition-opacity duration-300"
+                     transition-transform duration-500
+                     group-hover:scale-105"
         />
 
-        {/* White Overlay */}
+        <div
+          className="absolute inset-x-0 bottom-0 h-[48%]
+                     bg-linear-to-t
+                     from-black/85
+                     via-black/50
+                     to-transparent"
+        ></div>
 
-        <div className="absolute inset-0 bg-white/55"></div>
+       
+        <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
 
-
-        {/* Content */}
-
-        <div className="relative z-10 p-6">
-
-          {/* Icon */}
-
-          <div
-            className="w-12 h-12
-                       rounded-xl
-                       bg-white/90
-                       shadow-sm
-                       flex items-center justify-center
-                       text-xl mb-6
-                       group-hover:bg-black
-                       group-hover:text-white
-                       transition-all duration-300"
-          >
+          <div className="w-10 h-10 rounded-xl
+                          bg-white/20 backdrop-blur-md
+                          border border-white/30
+                          flex items-center justify-center
+                          text-lg mb-3">
             ✓
           </div>
 
-          <h3 className="text-base font-bold text-gray-900">
+          <h3 className="text-lg font-bold">
             Verified Professionals
           </h3>
 
-          <p className="mt-2 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm text-white/80 leading-5">
             Skilled and background-verified professionals
             for your home.
           </p>
@@ -621,62 +619,49 @@ const Home = () => {
       </div>
 
 
-      {/* ================= CARD 2 ================= */}
 
       <div
-        className="group relative overflow-hidden
-                   min-h-67.5
-                   rounded-2xl
-                   border border-white/70
-                   shadow-sm
-                   hover:shadow-xl
-                   hover:-translate-y-1
+        className="group relative h-72.5 overflow-hidden
+                   rounded-2xl shadow-md
+                   hover:-translate-y-1 hover:shadow-xl
                    transition-all duration-300"
       >
 
-        {/* Background Image */}
-
+        
         <img
           src={Quality}
           alt="Quality Assured"
-          className="absolute inset-0
-                     w-full h-full
+          className="absolute inset-0 w-full h-full
                      object-cover
-                     opacity-35
-                     group-hover:opacity-45
-                     transition-opacity duration-300"
+                     transition-transform duration-500
+                     group-hover:scale-105"
         />
 
-        {/* White Overlay */}
+     
+        <div
+          className="absolute inset-x-0 bottom-0 h-[48%]
+                     bg-linear-to-t
+                     from-black/85
+                     via-black/50
+                     to-transparent"
+        ></div>
 
-        <div className="absolute inset-0 bg-white/55"></div>
+       
+        <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
 
-
-        {/* Content */}
-
-        <div className="relative z-10 p-6">
-
-          {/* Icon */}
-
-          <div
-            className="w-12 h-12
-                       rounded-xl
-                       bg-white/90
-                       shadow-sm
-                       flex items-center justify-center
-                       text-xl mb-6
-                       group-hover:bg-black
-                       group-hover:text-white
-                       transition-all duration-300"
-          >
+          <div className="w-10 h-10 rounded-xl
+                          bg-white/20 backdrop-blur-md
+                          border border-white/30
+                          flex items-center justify-center
+                          text-lg mb-3">
             ★
           </div>
 
-          <h3 className="text-base font-bold text-gray-900">
+          <h3 className="text-lg font-bold">
             Quality Assured
           </h3>
 
-          <p className="mt-2 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm text-white/80 leading-5">
             High-quality service with attention
             to every detail.
           </p>
@@ -686,62 +671,50 @@ const Home = () => {
       </div>
 
 
-      {/* ================= CARD 3 ================= */}
+      
 
       <div
-        className="group relative overflow-hidden
-                   min-h-[270px]
-                   rounded-2xl
-                   border border-white/70
-                   shadow-sm
-                   hover:shadow-xl
-                   hover:-translate-y-1
+        className="group relative h-72.5 overflow-hidden
+                   rounded-2xl shadow-md
+                   hover:-translate-y-1 hover:shadow-xl
                    transition-all duration-300"
       >
 
-        {/* Background Image */}
-
+       
         <img
           src={Ontime}
           alt="On-Time Service"
-          className="absolute inset-0
-                     w-full h-full
+          className="absolute inset-0 w-full h-full
                      object-cover
-                     opacity-35
-                     group-hover:opacity-45
-                     transition-opacity duration-300"
+                     transition-transform duration-500
+                     group-hover:scale-105"
         />
 
-        {/* White Overlay */}
+       
+        <div
+          className="absolute inset-x-0 bottom-0 h-[48%]
+                     bg-linear-to-t
+                     from-black/85
+                     via-black/50
+                     to-transparent"
+        ></div>
 
-        <div className="absolute inset-0 bg-white/55"></div>
+       
+        <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
 
-
-        {/* Content */}
-
-        <div className="relative z-10 p-6">
-
-          {/* Icon */}
-
-          <div
-            className="w-12 h-12
-                       rounded-xl
-                       bg-white/90
-                       shadow-sm
-                       flex items-center justify-center
-                       text-xl mb-6
-                       group-hover:bg-black
-                       group-hover:text-white
-                       transition-all duration-300"
-          >
+          <div className="w-10 h-10 rounded-xl
+                          bg-white/20 backdrop-blur-md
+                          border border-white/30
+                          flex items-center justify-center
+                          text-lg mb-3">
             ⚡
           </div>
 
-          <h3 className="text-base font-bold text-gray-900">
+          <h3 className="text-lg font-bold">
             On-Time Service
           </h3>
 
-          <p className="mt-2 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm text-white/80 leading-5">
             Get professionals at the scheduled time,
             without unnecessary delays.
           </p>
@@ -751,62 +724,50 @@ const Home = () => {
       </div>
 
 
-      {/* ================= CARD 4 ================= */}
+    
 
       <div
-        className="group relative overflow-hidden
-                   min-h-67.5
-                   rounded-2xl
-                   border border-white/70
-                   shadow-sm
-                   hover:shadow-xl
-                   hover:-translate-y-1
+        className="group relative h-72.5 overflow-hidden
+                   rounded-2xl shadow-md
+                   hover:-translate-y-1 hover:shadow-xl
                    transition-all duration-300"
       >
 
-        {/* Background Image */}
-
+        
         <img
           src={EasyBooking}
           alt="Easy Booking"
-          className="absolute inset-0
-                     w-full h-full
+          className="absolute inset-0 w-full h-full
                      object-cover
-                     opacity-25
-                     group-hover:opacity-45
-                     transition-opacity duration-300"
+                     transition-transform duration-500
+                     group-hover:scale-105"
         />
 
-        {/* White Overlay */}
+      
+        <div
+          className="absolute inset-x-0 bottom-0 h-[48%]
+                     bg-linear-to-t
+                     from-black/85
+                     via-black/50
+                     to-transparent"
+        ></div>
 
-        <div className="absolute inset-0 bg-white/55"></div>
+       
+        <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
 
-
-        {/* Content */}
-
-        <div className="relative z-10 p-6">
-
-          {/* Icon */}
-
-          <div
-            className="w-12 h-12
-                       rounded-xl
-                       bg-white/90
-                       shadow-sm
-                       flex items-center justify-center
-                       text-xl mb-6
-                       group-hover:bg-black
-                       group-hover:text-white
-                       transition-all duration-300"
-          >
+          <div className="w-10 h-10 rounded-xl
+                          bg-white/20 backdrop-blur-md
+                          border border-white/30
+                          flex items-center justify-center
+                          text-lg mb-3">
             ↗
           </div>
 
-          <h3 className="text-base font-bold text-gray-900">
+          <h3 className="text-lg font-bold">
             Easy Booking
           </h3>
 
-          <p className="mt-2 text-sm leading-6 text-gray-600">
+          <p className="mt-1 text-sm text-white/80 leading-5">
             Book your service quickly with a simple
             and smooth process.
           </p>
@@ -815,12 +776,207 @@ const Home = () => {
 
       </div>
 
-
     </div>
 
   </div>
 
 </section>
+
+  {/* fourt section */}
+     
+      <section className="px-6 py-4">
+        <div className="max-w-7xl mx-auto">
+
+          <div className="relative h-46.75 overflow-hidden rounded-2xl">
+
+          
+            <img
+              src={mainImage}
+              alt="Professional home service"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+           
+            <div
+              className="absolute left-0 top-0 h-full w-[45%]
+                         bg-[#F8EFE5]/95
+                         rounded-r-2xl"
+            ></div>
+
+           
+            <div className="relative z-10 h-full flex items-center">
+
+              <div className="px-7 max-w-112.5">
+
+                <h1 className="text-[25px] leading-[1.12]
+                               font-extrabold
+                               tracking-tight
+                               text-gray-900">
+                  A Cleaner, Safer
+                  <br />
+                  and Happier Home
+                  <br />
+                  is Just a Click Away
+                </h1>
+
+                <p className="mt-2 text-[11px]
+                              leading-4 text-gray-700">
+                  Get professional home services with trusted experts.
+                  <br />
+                  Quality service, every time.
+                </p>
+
+                <button
+                  className="mt-2
+                             bg-black text-white
+                             px-7 py-2.5
+                             rounded-md
+                             text-[10px]
+                             font-semibold
+                             shadow-md
+                             hover:bg-gray-800
+                             transition-all duration-200
+                             hover:-translate-y-0.5"
+                >
+                  Book a Service
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>  
+
+      {/* fifth section */}
+       
+<section className="bg-white py-10">
+  <div className="max-w-6xl mx-auto px-6">
+
+    
+    <h2 className="text-2xl font-bold text-gray-900 mb-6">
+      How It Works
+    </h2>
+
+    
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+
+      
+      <div className="h-13.5 rounded-xl border border-gray-200
+                      bg-white px-3 flex items-center gap-3
+                      hover:shadow-sm transition-all">
+
+        <div className="w-7 h-7 shrink-0 rounded-full
+                        bg-gray-100 flex items-center justify-center
+                        text-xs font-semibold text-gray-700">
+          1
+        </div>
+
+        <div>
+          <h3 className="text-[10px] font-bold text-gray-900">
+            Select Service
+          </h3>
+          <p className="text-[8px] text-gray-400 mt-1">
+            Choose the service you need
+          </p>
+        </div>
+      </div>
+
+
+      <div className="h-13.5 rounded-xl border border-gray-200
+                      bg-white px-3 flex items-center gap-3
+                      hover:shadow-sm transition-all">
+
+        <div className="w-7 h-7 shrink-0 rounded-full
+                        bg-gray-100 flex items-center justify-center
+                        text-xs font-semibold text-gray-700">
+          2
+        </div>
+
+        <div>
+          <h3 className="text-[10px] font-bold text-gray-900">
+            Choose Date & Time
+          </h3>
+          <p className="text-[8px] text-gray-400 mt-1">
+            Pick a convenient slot
+          </p>
+        </div>
+      </div>
+
+     
+      <div className="h-13.5 rounded-xl border border-gray-200
+                      bg-white px-3 flex items-center gap-3
+                      hover:shadow-sm transition-all">
+
+        <div className="w-7 h-7 shrink-0 rounded-full
+                        bg-gray-100 flex items-center justify-center
+                        text-xs font-semibold text-gray-700">
+          3
+        </div>
+
+        <div>
+          <h3 className="text-[10px] font-bold text-gray-900">
+            Verify OTP
+          </h3>
+          <p className="text-[8px] text-gray-400 mt-1">
+            Verify your mobile number
+          </p>
+        </div>
+      </div>
+
+      
+      <div className="h-13.5 rounded-xl border border-gray-200
+                      bg-white px-3 flex items-center gap-3
+                      hover:shadow-sm transition-all">
+
+        <div className="w-7 h-7 shrink-0 rounded-full
+                        bg-gray-100 flex items-center justify-center
+                        text-xs font-semibold text-gray-700">
+          4
+        </div>
+
+        <div>
+          <h3 className="text-[10px] font-bold text-gray-900">
+            Get Service
+          </h3>
+          <p className="text-[8px] text-gray-400 mt-1">
+            Professional arrives at your home
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>      
+
+
+
+{/* sixth section */}
+
+<div className=' h-20 w-full bg-[#EEF6FB] flex items-center justify-center gap-25' >
+   <div className=' h-14 w-50  font-serif   ' >
+    <div className='font-bold '>10k+</div>
+    <div>Happy Customer</div>
+   </div>
+   <div className=' h-14 w-50  font-serif'>
+      <div className='font-bold'>4.8/5</div>
+    <div>Average rating</div>
+   </div>
+   <div className=' h-14 w-50 font-serif'>
+      <div className='font-bold'>verified</div>
+    <div>Professinals</div>
+   </div>
+   <div className=' h-14 w-50 font-serif'>
+      <div className='font-bold'>on time</div>
+    <div>You can count on</div>
+   </div>
+</div>
+
+
+
+
+
     </main>
        </>
   )
